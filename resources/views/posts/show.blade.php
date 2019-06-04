@@ -52,7 +52,7 @@
                     (injected humour and the like).
                     <div class="actions mt-3">
                         <i class="fa fa-edit"></i> Editar
-                        <i class="fa fa-trash ml-2" ></i> Apagar
+                        <i class="fa fa-trash ml-2"></i> Apagar
 
                     </div>
                 </div>
@@ -67,17 +67,26 @@
                 <div class="col-sm">
                     <img src="{{ asset('img/icon/comment.svg') }}" alt="..." style="width: 2vh; height: 2vh;">
                     <span><strong>Username</strong> <small>| 15:12 | 30/05/2019</small></span>
-                    <a href="" class="btn btn-sm btn-primary float-right">Responder</a>
+                    <a href="" class="btn btn-sm float-right">Responder</a>
                     <div class="content ml-4 mt-1 mr-5">
                         <div class="comment text-muted text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque turpis ante, pulvinar in mi id, molestie mollis arcu. Nam pharetra odio mollis purus condimentum, quis semper nulla rhoncus. Donec posuere elit a sapien convallis, at viverra quam lobortis. Duis id lobortis diam. Nunc tincidunt non velit sed sagittis.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque turpis ante, pulvinar
+                            in mi id, molestie mollis arcu. Nam pharetra odio mollis purus condimentum, quis semper
+                            nulla rhoncus. Donec posuere elit a sapien convallis, at viverra quam lobortis. Duis id
+                            lobortis diam. Nunc tincidunt non velit sed sagittis.
                         </div>
                         <div class="reply mt-3">
                             <img src="{{ asset('img/icon/reply.svg') }}" alt="..." style="width: 2vh; height: 2vh;">
                             <span><strong>Username</strong> <small>| 15:18 | 30/05/2019</small></span>
                             <div class="comment text-muted ml-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque turpis ante, pulvinar in mi id, molestie mollis arcu. Nam pharetra odio mollis purus condimentum, quis semper nulla rhoncus. Donec posuere elit a sapien convallis, at viverra quam lobortis. Duis id lobortis diam. Nunc tincidunt non velit sed sagittis.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque turpis ante,
+                                pulvinar in mi id, molestie mollis arcu. Nam pharetra odio mollis purus condimentum,
+                                quis semper nulla rhoncus. Donec posuere elit a sapien convallis, at viverra quam
+                                lobortis. Duis id lobortis diam. Nunc tincidunt non velit sed sagittis.
                             </div>
+                        </div>
+                        <div class="new-comment mt-5 text-center">
+                            <a href="" class="btn btn-primary btn-sm">Comentar</a>
                         </div>
                     </div>
                 </div>

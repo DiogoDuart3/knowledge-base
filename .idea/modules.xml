@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/knownlage-base.iml" filepath="$PROJECT_DIR$/.idea/knownlage-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/knownledge-base.iml" filepath="$PROJECT_DIR$/.idea/knownledge-base.iml" />
     </modules>
   </component>
 </project>

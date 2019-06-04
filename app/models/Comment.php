@@ -3,8 +3,9 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Comment extends Model
+class Comment extends Eloquent
 {
     //
 }

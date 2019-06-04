@@ -2,21 +2,17 @@
 
 namespace App\models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-use Illuminate\Auth\Authenticatable as AuthenticableTrait;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 
-class User extends Eloquent implements AuthenticatableContract, CanResetPasswordContract
+class User extends Authenticatable
 {
-    use AuthenticableTrait;
+//    use AuthenticableTrait;
     use Notifiable;
-    use CanResetPassword;
+//    use CanResetPassword;
 
-    protected $connection = 'mongodb';
+//    protected $connection = 'mongodb';
 
     /**
      * The attributes that are mass assignable.
@@ -44,4 +40,12 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    public function posts(){
+        return $this->hasOne(Post::class);
+    }
 }
