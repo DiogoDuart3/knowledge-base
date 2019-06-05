@@ -3,9 +3,10 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Category extends Eloquent
+class Category extends Model
 {
-    //
+    public function posts(){
+        return $this->belongsToMany(Post::class);
+    }
 }

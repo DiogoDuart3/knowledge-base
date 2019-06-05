@@ -3,9 +3,10 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Comment extends Eloquent
+class Comment extends Model
 {
-    //
+    function post(){
+        return $this-$this->belongsTo(Post::class);
+    }
 }

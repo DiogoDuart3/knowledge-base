@@ -19,8 +19,8 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->mediumText('body');
-            $table->unsignedBigInteger('answer_id');
-            $table->boolean('confirmed_by_admin');
+            $table->unsignedBigInteger('answer_id')->unsigned()->nullable();
+            $table->boolean('confirmed_by_admin')->default(false);
             $table->timestamps();
         });
     }
