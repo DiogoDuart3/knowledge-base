@@ -23,8 +23,4 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/posts', 'PostController', ['except' => ['index']]);
 });
 
-Route::get('/posts', 'PostController@index');
-
-Route::get('/posts/1', function(){
-    return view('posts.show');
-});
+Route::get('/posts', 'PostController@index')->name('posts.index');

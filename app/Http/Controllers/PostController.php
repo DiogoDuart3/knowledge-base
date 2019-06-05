@@ -10,6 +10,11 @@ class PostController extends Controller
 {
     function index(){
         $posts = Post::all()->sortBy('desc');
-        return view('posts.index', compact('posts'));
+        return view('post.index', compact('posts'));
+    }
+
+    function create(){
+        $post = new Post();
+        return view('post.create', compact('post'));
     }
 }

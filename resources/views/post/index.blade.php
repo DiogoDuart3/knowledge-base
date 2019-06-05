@@ -40,12 +40,19 @@
                 </div>
             </div>
         </div>
+        @auth
+        <div class="row">
+            <div class="col">
+                <a href="{{ route('posts.create') }}" class="btn btn-outline-success float-right">Novo Post</a>
+            </div>
+        </div>
+        @endauth
         @foreach($posts as $post)
             <div class="row mt-5 ml-1 mr-1">
                 <div class="card col-12 p-0" mb-5>
                     <div class="card-header">
                         {{ $post->title }}
-                        <span class="ml-5 float-right text-muted">{{ $post->category->name }}, Laravel Routing</span>
+                        <span class="ml-5 float-right text-muted">{{ $post->category->name }}</span>
                     </div>
                     <div class="card-body">
                         {{--                    <h5 class="card-title">Special title treatment</h5>--}}
@@ -53,7 +60,7 @@
                             {{ $post->body }}
                         </p>
                         <div class="justify-content-center text-center">
-                            <a href="/posts/1" class="btn btn-primary btn-sm">Continuar a ler</a>
+                            <a href="/posts/1" class="btn btn-outline-primary btn-sm">Continuar a ler</a>
                         </div>
                     </div>
                     <div class="card-footer text-muted">

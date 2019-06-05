@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->unsignedBigInteger('post_id')->unsigned();
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('restrict');
+            $table->foreign('post_id')->references('id')->on('post')->onDelete('restrict');
             $table->mediumText('body');
             $table->timestamps();
         });
