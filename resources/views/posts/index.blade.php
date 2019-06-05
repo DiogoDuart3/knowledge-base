@@ -45,7 +45,7 @@
                 <div class="card col-12 p-0" mb-5>
                     <div class="card-header">
                         {{ $post->title }}
-                        <span class="ml-5 float-right text-muted">Laravel, Laravel Routing</span>
+                        <span class="ml-5 float-right text-muted">{{ $post->category->name }}, Laravel Routing</span>
                     </div>
                     <div class="card-body">
                         {{--                    <h5 class="card-title">Special title treatment</h5>--}}
