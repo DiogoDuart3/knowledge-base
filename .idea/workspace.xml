@@ -153,7 +153,7 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="974" />
@@ -276,15 +276,15 @@
       <option name="presentableId" value="Default" />
       <updated>1559642422043</updated>
       <workItem from="1559642426851" duration="13002000" />
-      <workItem from="1559719109668" duration="4345000" />
+      <workItem from="1559719109668" duration="4722000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17347000" />
+    <option name="totallyTimeSpent" value="17724000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23294243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
