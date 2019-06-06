@@ -43,7 +43,7 @@
         @auth
         <div class="row">
             <div class="col">
-                <a href="{{ route('posts.create') }}" class="btn btn-outline-success float-right">Novo Post</a>
+                <a href="{{ route('issue.create') }}" class="btn btn-outline-success float-right">Novo Post</a>
             </div>
         </div>
         @endauth
@@ -57,7 +57,7 @@
                     <div class="card-body">
                         {{--                    <h5 class="card-title">Special title treatment</h5>--}}
                         <p class="card-text" style="max-height: 40px; overflow: hidden;">
-                            {{ $issue->body }}
+                            {{ $issue->description }}
                         </p>
                         <div class="justify-content-center text-center">
                             <a href="{{ route('issues.show', $issue->id) }}" class="btn btn-outline-primary btn-sm">Continuar a ler</a>

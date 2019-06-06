@@ -22,3 +22,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/issue', 'IssueController', ['except' => ['index', 'show']]);
     Route::resource('/categories', 'CategoryController');
 });
+
+Route::group(['prefix'=>'admin', 'middleware'=>'auth|admin'], function(){
+
+});

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <a href="/posts" class="btn btn-primary ml-2">Voltar</a>
+            <a href="/" class="btn btn-primary ml-2">Voltar</a>
         </div>
         <div class="row mt-5 ml-1 mr-1">
             <div class="card col-12 p-0" mb-5>

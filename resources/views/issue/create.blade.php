@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="{{ route('posts.index') }}" class="btn btn-outline-primary"><i class="fas fa-angle-left"></i>
+                <a href="{{ route('home') }}" class="btn btn-outline-primary"><i class="fas fa-angle-left"></i>
                     Voltar</a>
             </div>
         </div>
