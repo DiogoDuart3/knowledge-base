@@ -8,7 +8,7 @@
         {{--        <a href="{{ route('categories.create') }}" class="btn btn-outline-success mb-2 float-right">Criar categoria</a>--}}
 
         <hr>
-        @include()
+        @include('layouts.messages')
         {!! Form::model($category, ['method'=>'POST', 'action'=>'CategoryController@store', 'class'=>'form-inline']) !!}
         <div class="form-group max-sm-5 mb-2 col-6">
             <label for="category-name" class="col-6">Nome da categoria</label>
