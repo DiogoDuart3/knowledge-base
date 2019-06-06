@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 class IssueController extends Controller
 {
     function index(){
-        $posts = Issue::all()->sortBy('desc');
-        return view('issue.index', compact('posts'));
+        $issues = Issue::all()->sortBy('desc');
+        return view('issue.index', compact('issues'));
     }
 
     function create(){
-        $post = new Issue();
-        return view('issue.create', compact('post'));
+        $issue = new Issue();
+        return view('issue.create', compact('issue'));
     }
 
     function show(){
