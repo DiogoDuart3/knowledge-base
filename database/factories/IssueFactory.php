@@ -9,7 +9,7 @@ $factory->define(Issue::class, function (Faker $faker) {
     return [
         'user_id' => 1,
         'subject' => $faker->company(),
-        'body' => $faker->realText(100),
+        'description' => $faker->realText(100),
         'category_id' => 1,
     ];
 });

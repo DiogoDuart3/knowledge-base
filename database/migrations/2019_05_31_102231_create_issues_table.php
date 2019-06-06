@@ -18,7 +18,8 @@ class CreateIssuesTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('subject');
-            $table->mediumText('body');
+            $table->mediumText('description');
+            $table->mediumText('issue_solution')->nullable();
             $table->timestamps();
         });
     }
