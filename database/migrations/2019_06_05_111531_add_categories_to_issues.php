@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCategoriesToPosts extends Migration
+class AddCategoriesToIssues extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddCategoriesToPosts extends Migration
      */
     public function up()
     {
-        Schema::table('post', function (Blueprint $table) {
+        Schema::table('issues', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id')->after('body')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('issues');
         });
     }
 
@@ -26,7 +26,7 @@ class AddCategoriesToPosts extends Migration
      */
     public function down()
     {
-        Schema::table('post', function (Blueprint $table) {
+        Schema::table('issue', function (Blueprint $table) {
             $table->dropColumn('category_id');
         });
     }

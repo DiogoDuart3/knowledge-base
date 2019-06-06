@@ -4,7 +4,7 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Issue extends Model
 {
     protected $fillable = ['user_id', 'title', 'body', 'answer_id', 'confirmed_by_admin'];
 

@@ -46,6 +46,6 @@ class User extends Authenticatable
     }
 
     public function posts(){
-        return $this->hasOne(Post::class);
+        return $this->hasOne(Issue::class);
     }
 }
