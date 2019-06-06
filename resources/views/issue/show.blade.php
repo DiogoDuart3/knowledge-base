@@ -23,10 +23,6 @@
                             <span>
                                 7 <i class="far fa-comments"></i>
                             </span>
-                            <span class="mr-5 ml-5"></span>
-                            <span>
-                                <i class="fas fa-check-double"></i>
-                            </span>
                         </div>
                         <div class="col-sm">
                             <span class="float-right">14:30 | 20/05/2019</span>

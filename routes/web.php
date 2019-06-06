@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'IssueController@index');
+Route::get('/', 'IssueController@index')->name('home');
+Route::get('/issue/{id}', 'IssueController@show')->name('issues.show');
 
 Auth::routes();
 

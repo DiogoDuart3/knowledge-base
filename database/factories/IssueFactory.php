@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Issue::class, function (Faker $faker) {
     return [
         'user_id' => 1,
-        'title' => $faker->company(),
+        'subject' => $faker->company(),
         'body' => $faker->realText(100),
         'category_id' => 1,
     ];

@@ -12,7 +12,7 @@
             <div class="col-12 mt-5">
                 <form>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Título</label>
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Subject</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="staticEmail" placeholder="Título">
                         </div>
