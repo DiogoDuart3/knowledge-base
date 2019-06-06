@@ -25,7 +25,7 @@
                     <th scope="row">{{ $category->id }}</th>
                     <td><a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a></td>
                     <td class="text-center">{{ Carbon\Carbon::parse($category->created_at)->format('H:i | d-m-Y') }}</td>
-                    <td class="text-center">{{ Carbon\Carbon::parse($category->created_at)->format('H:i | d-m-Y') }}</td>
+                    <td class="text-center">{{ Carbon\Carbon::parse($category->updated_at)->format('H:i | d-m-Y') }}</td>
                     <td class="text-right">
                         <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-outline-primary btn-sm">Editar</a>
                         {!! Form::open(['route'=>['categories.destroy', $category->id], 'method'=>'delete', 'class'=>'d-inline']) !!}
