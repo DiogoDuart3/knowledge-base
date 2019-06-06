@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('/posts', 'PostController', ['except' => ['index']]);
+    Route::resource('/categories', 'CategoryController');
 });
 
 Route::get('/posts', 'PostController@index')->name('posts.index');
