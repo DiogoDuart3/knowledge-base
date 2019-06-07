@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="text-center mb-4">Gerir Categorias</h1>
 
-        <a href="{{ route('posts.index') }}" class="btn btn-outline-primary mb-2">Voltar</a>
+        <a href="{{ route('home') }}" class="btn btn-outline-primary mb-2">Voltar</a>
         <a href="{{ route('categories.create') }}" class="btn btn-outline-success mb-2 float-right">Criar categoria</a>
 
         @include('layouts.messages')

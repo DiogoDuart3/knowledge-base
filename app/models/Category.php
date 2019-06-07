@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected $fillable = ['name'];
 
-    public function posts(){
+    public function issues(){
         return $this->HasMany(Issue::class);
     }
 }
