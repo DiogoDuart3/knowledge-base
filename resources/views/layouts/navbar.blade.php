@@ -31,14 +31,12 @@
                             Gerir
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @admin()
-                            test
+                            @admin
+                            <a class="dropdown-item" href="{{ route('manage-users.index') }}">Users</a>
+                            <div class="dropdown-divider"></div>
                             @endadmin
                             <a class="dropdown-item" href="{{ route('categories.index') }}">Categorias</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Tags</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

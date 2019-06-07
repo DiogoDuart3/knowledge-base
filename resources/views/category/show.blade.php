@@ -8,7 +8,7 @@
 
         @include('layouts.messages')
 
-        <h4 class="text-center">Posts</h4>
+        <h4 class="text-center">Issues</h4>
         <table class="table table-sm table-hover">
             <thead>
             <tr>
@@ -18,11 +18,11 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($category->posts as $post)
+            @foreach($category->issues as $issue)
                 <tr>
-                    <th scope="row">{{$post->id}}</th>
-                    <td>{{$post->title}}</td>
-                    <td class="text-right"><a class="btn btn-sm btn-outline-primary" href="{{ route('posts.show', $post->id) }}">Ver</a></td>
+                    <th scope="row">{{$issue->id}}</th>
+                    <td>{{$issue->subject}}</td>
+                    <td class="text-right"><a class="btn btn-sm btn-outline-primary" href="{{ route('issues.show', $issue->id) }}">Ver</a></td>
                 </tr>
             @endforeach
             {{--            @foreach($categories as $category)--}}

@@ -25,13 +25,12 @@ class BladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('admin', function() {
-            $condition = false;
-            if(Auth::user()) $condition = Auth::user()->isAdmin();
-            return "<?php if ($condition) : ?>";
+        Blade::directive('admin', function ($expression) {
+            return "<?php if (Auth::check() && Auth::user()->isAdmin()) : ?>";
         });
-        Blade::directive('endadmin', function() {
-            return "<?php endif; ?>";
+
+        Blade::directive('endadmin', function ($expression) {
+            return '<?php endif; ?>';
         });
     }
 }

@@ -14,7 +14,7 @@ class AddCategoriesToIssues extends Migration
     public function up()
     {
         Schema::table('issues', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id')->after('body')->unsigned();
+            $table->unsignedBigInteger('category_id')->after('subject')->unsigned();
             $table->foreign('category_id')->references('id')->on('issues');
         });
     }

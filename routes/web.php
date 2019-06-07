@@ -23,6 +23,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/categories', 'CategoryController');
 });
 
-Route::group(['prefix'=>'admin', 'middleware'=>'auth|admin'], function(){
-
+Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
+    Route::resource('/manage-users', 'Admin\ManageUserController');
 });

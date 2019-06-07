@@ -32,7 +32,7 @@ class CategoryController extends Controller
 
     function destroy($id)
     {
-        if (Category::find($id)->posts->count()) {
+        if (Category::findOrFail($id)->issues->count()) {
             session()->flash('error-message', 'Categoria está a ser usada em posts.');
         } else {
             Category::destroy($id);
