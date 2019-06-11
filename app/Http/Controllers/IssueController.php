@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class IssueController extends Controller
 {
     function index(){
-        $issues = Issue::all()->sortBy('desc');
+        $issues = Issue::orderBy('id', 'DESC')->get();
         return view('issue.index', compact('issues'));
     }
 

@@ -41,27 +41,30 @@
             </div>
         </div>
         @auth
-        <div class="row">
-            <div class="col">
-                <a href="{{ route('issue.create') }}" class="btn btn-outline-success float-right">Novo Post</a>
+            <div class="row">
+                <div class="col">
+                    <a href="{{ route('issue.create') }}" class="btn btn-outline-success float-right">New issue</a>
+                </div>
             </div>
-        </div>
         @endauth
         @foreach($issues as $issue)
             <div class="row mt-5 ml-1 mr-1">
                 <div class="card col-12 p-0" mb-5>
-                    <div class="card-header">
-                        {{ $issue->subject }}
-                        <span class="ml-5 float-right text-muted">{{ $issue->category->name }}</span>
-                    </div>
+                    <a href="{{ route('issues.show', $issue->id) }}">
+                        <div class="card-header">
+                            {{ $issue->subject }}
+                            <span class="ml-5 float-right text-muted">{{ $issue->category->name }}</span>
+                        </div>
+                    </a>
                     <div class="card-body">
                         {{--                    <h5 class="card-title">Special title treatment</h5>--}}
-                        <p class="card-text" style="max-height: 40px; overflow: hidden;">
-                            {{ $issue->description }}
+                        <p class="card-text" style="max-height: 70px; overflow: hidden;">
+                            {{--                            {{ $issue->description }}--}}
+                            {{{ substr($issue->description, 0, 250) }}}
+                            @if(strlen($issue->description) >= 250)
+                                (...)
+                            @endif
                         </p>
-                        <div class="justify-content-center text-center">
-                            <a href="{{ route('issues.show', $issue->id) }}" class="btn btn-outline-primary btn-sm">Continuar a ler</a>
-                        </div>
                     </div>
                     <div class="card-footer text-muted">
                         <div class="row">
