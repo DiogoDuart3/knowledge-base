@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'IssueController@index')->name('home');
-Route::get('/issue/{id}', 'IssueController@show')->name('issues.show');
 
 Auth::routes(['register'=>false]);
 
@@ -23,6 +22,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/categories', 'CategoryController');
 });
 
+Route::get('/issue/{id}', 'IssueController@show')->name('issues.show');
+
 Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
     Route::resource('/manage-users', 'Admin\ManageUserController');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/ckfinder/browser', 'CKFinder\CKFinderController@browserAction');
 });

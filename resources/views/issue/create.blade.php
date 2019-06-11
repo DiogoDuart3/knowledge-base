@@ -14,13 +14,13 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Subject</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="staticEmail" placeholder="Título">
+                            <input type="text" class="form-control" id="staticEmail" placeholder="Subject">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Body</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="CK EDITOR.....">
+                        <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -62,4 +62,23 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @include('ckfinder::setup')
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        let editor = CKEDITOR.replace('editor1', {
+            filebrowserWindowWidth: '1000',
+            filebrowserWindowHeight: '700',
+            // Use named CKFinder browser route
+            filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}',
+            // Use named CKFinder connector route
+            filebrowserUploadUrl: '{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files'
+
+        });
+        CKFinder.setupCKEditor(editor);
+    </script>
 @endsection
