@@ -26,17 +26,17 @@ class CategoryController extends Controller
             'name' => 'required|min:3|max:30'
         ]);
         Category::create($data);
-        session()->flash('success-message', 'Categoria criada com sucesso.');
+        session()->flash('success-message', 'Category created successfully');
         return redirect(route('categories.index'));
     }
 
     function destroy($id)
     {
         if (Category::findOrFail($id)->issues->count()) {
-            session()->flash('error-message', 'Categoria está a ser usada em posts.');
+            session()->flash('error-message', 'Category is being used in posts');
         } else {
             Category::destroy($id);
-            session()->flash('success-message', 'Categoria apagada com sucesso.');
+            session()->flash('success-message', 'Category deleted successfully');
         }
         return redirect(route('categories.index'));
     }
@@ -53,7 +53,7 @@ class CategoryController extends Controller
         ]);
         $category->name = $data['name'];
         $category->save();
-        session()->flash('success-message', 'Categoria editada com sucesso.');
+        session()->flash('success-message', 'Category edited successfully');
         return redirect(route('categories.index'));
     }
 

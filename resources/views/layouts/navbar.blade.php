@@ -35,7 +35,7 @@
                             <a class="dropdown-item" href="{{ route('manage-users.index') }}">Users</a>
                             <div class="dropdown-divider"></div>
                             @endadmin
-                            <a class="dropdown-item" href="{{ route('categories.index') }}">Categorias</a>
+                            <a class="dropdown-item" href="{{ route('categories.index') }}">Categories</a>
                             <a class="dropdown-item" href="#">Tags</a>
                         </div>
                     </li>
