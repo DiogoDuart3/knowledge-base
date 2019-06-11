@@ -15,10 +15,15 @@ class IssueController extends Controller
 
     function create(){
         $issue = new Issue();
-        return view('issue.create', compact('issue'));
+        $categories = Category::all();
+        return view('issue.create', compact('issue', 'categories'));
     }
 
     function show(){
         return view('issue.show');
+    }
+
+    function store(){
+        dd(request());
     }
 }
