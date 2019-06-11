@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\models\Category;
 use App\models\Issue;
+use App\models\Tag;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
@@ -16,7 +17,8 @@ class IssueController extends Controller
     function create(){
         $issue = new Issue();
         $categories = Category::all();
-        return view('issue.create', compact('issue', 'categories'));
+        $tags = Tag::all();
+        return view('issue.create', compact('issue', 'categories', 'tags'));
     }
 
     function show(){
