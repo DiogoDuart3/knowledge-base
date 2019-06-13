@@ -19,7 +19,7 @@ class CreateIssuesTagsTable extends Migration
             $table->unsignedBigInteger('tag_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('issue_id')->references('id')->on('issues');
+            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tags');
         });
     }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card col-12 p-0" mb-5>
-            <a href="{{ route('issue.show', $issue->id) }}">
+            <a href="{{ route('issue.show', $issue->id) }}" target="_blank">
                 <div class="card-header">
                     {{ $issue->subject }}
                     <span class="ml-5 float-right text-muted">{{ $issue->category->name }}</span>
@@ -43,14 +43,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="card justify-content-center d-flex" style="width: 25rem;">
+            <div class="card ml-auto mr-auto mt-5" style="width: 25rem;">
                 <div class="card-body">
                     <h5 class="card-title">Delete issue #{{ $issue->id }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted"></h6>
-                    <p class="card-text">Are you sure you want to delete this issue?
+                    <p class="card-text">
+                        Are you sure you want to delete this issue?
+                        <br>
                         This action is permanent and can not be reversed.</p>
-                    <a href="#" class="card-link">Cancel</a>
-                    <a href="#" class="card-link text-danger float-right">Delete</a>
+                    {!! Form::model($issue, ['method'=>'DELETE','action' => ['IssueController@destroy', $issue->id], 'id'=>'FormDelete']) !!}
+                    <a href="{{ route('issue.show', $issue->id) }}" class="card-link">Cancel</a>
+                    <a href="#" class="text-danger float-right card-link" onclick="$('#FormDelete').submit()">Delete</a>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

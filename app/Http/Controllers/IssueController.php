@@ -89,4 +89,11 @@ class IssueController extends Controller
         $issue = Issue::findOrFail($id);
         return view('issue.delete', compact('issue'));
     }
+
+    function destroy($id){
+        $issue = Issue::findOrFail($id);
+        $issue->delete();
+        session()->flash('success-message', 'Issue deleted successfully');
+        return redirect(route('home'));
+    }
 }
