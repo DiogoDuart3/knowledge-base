@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <a href="{{ route('home') }}" class="btn text-primary" data-toggle="tooltip"
-               data-placement="top" title="Back"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+               data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         </div>
         <div class="row">
             @include('layouts.messages')
@@ -25,7 +25,7 @@
                             <span><strong>{{ $issue->user->name }}</strong></span></div>
                         <div class="col-sm text-center">
                             <span>
-                                {{ $issue->comments->count() }} <i class="far fa-comments"></i>
+                                {{ $issue->comments->count() }} <i class="fa fa-comments"></i>
                             </span>
                         </div>
                         <div class="col-sm">
@@ -51,7 +51,7 @@
             </div>
             <div class="row mt-5 w-100">
                 <div class="col-12">
-                    <h2 class="text-center">Comments <i class="far fa-comment-alt"></i></h2>
+                    <h2 class="text-center">Comments <i class="fa fa-comment-alt"></i></h2>
                     <hr class="w-75">
                 </div>
             </div>

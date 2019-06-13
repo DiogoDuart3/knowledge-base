@@ -82,4 +82,9 @@ class IssueController extends Controller
         session()->flash('success-message', 'Issue successfully edited');
         return redirect(route('issue.show', $id));
     }
+
+    function delete($id){
+        $issue = Issue::findOrFail($id);
+        return view('issue.delete', compact('issue'));
+    }
 }
