@@ -5,10 +5,10 @@
         <h1 class="text-center mb-4">Manage user <span class="text-muted">{{ $user->name }}</span></h1>
 
         <a href="{{ route('manage-users.index') }}" class="btn text-primary mb-2" data-toggle="tooltip"
-           data-placement="top" title="Back"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+           data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         <a href="{{ route('manage-users.edit', $user->id) }}" class="btn mb-2 float-right text-primary"
            data-toggle="tooltip"
-           data-placement="top" title="Edit"><i class="fas fa-pencil-alt fa-2x"></i></a>
+           data-placement="top" title="Edit"><i class="fa fa-pencil-alt fa-2x"></i></a>
 
         <hr>
         @include('layouts.messages')
@@ -48,10 +48,10 @@
             <div class="col-sm-10">
                 <span class="form-control-plaintext">
                     @if(!$user->deleted_at)
-                        <i class="far fa-check-circle fa-2x text-success" data-toggle="tooltip"
+                        <i class="fa fa-check-circle fa-2x text-success" data-toggle="tooltip"
                            data-placement="top" title="Active"></i>
                     @else
-                        <i class="far fa-times-circle fa-2x text-danger" data-toggle="tooltip"
+                        <i class="fa fa-times-circle fa-2x text-danger" data-toggle="tooltip"
                            data-placement="top" title="Inactive"></i>
                     @endif
                 </span>

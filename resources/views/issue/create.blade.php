@@ -4,11 +4,11 @@
     <div class="container">
         <h1 class="text-center mb-4">Create new issue</h1>
 
-        <a href="{{ route('manage-users.index') }}" class="btn text-primary" data-toggle="tooltip"
-           data-placement="top" title="Back"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+        <a href="{{ route('home') }}" class="btn text-primary" data-toggle="tooltip"
+           data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         <a onclick="document.getElementById('formCreate').submit()" class="btn text-success float-right"
            data-toggle="tooltip"
-           data-placement="top" title="Add mew issue"><i class="fas fa-check fa-2x"></i></a>
+           data-placement="top" title="Add mew issue"><i class="fa fa-check fa-2x"></i></a>
         <hr>
         @include('layouts.messages')
         <div class="row">

@@ -5,7 +5,7 @@
         <h1 class="text-center mb-4">Create new user</h1>
 
         <a href="{{ route('manage-users.index') }}" class="btn text-primary" data-toggle="tooltip"
-           data-placement="top" title="Back"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+           data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
 
         <hr>
         @include('layouts.messages')

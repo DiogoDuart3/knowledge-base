@@ -5,9 +5,9 @@
         <h1 class="text-center mb-4">Manage Users</h1>
 
         <a href="{{ route('home') }}" class="btn text-primary" data-toggle="tooltip"
-           data-placement="top" title="Back"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+           data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         <a href="{{ route('manage-users.create') }}" class="btn text-success mb-2 float-right" data-toggle="tooltip"
-           data-placement="top" title="Add new user"><i class="fas fa-plus-circle fa-2x"></i></a>
+           data-placement="top" title="Add new user"><i class="fa fa-plus-circle fa-2x"></i></a>
 
         @include('layouts.messages')
 

@@ -17,17 +17,17 @@ Auth::routes(['register'=>false]);
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/issue/{id}', 'IssueController@show')->name('issue.show');
-
-Route::get('/issue', function(){ return redirect(route('home')); });
-
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('/issue', 'IssueController', ['except' => ['index', 'show']]);
     Route::get('/issue/{id}/delete', 'IssueController@delete')->name('issue.delete');
     Route::resource('/categories', 'CategoryController');
     Route::get('/ckfinder/browser', 'CKFinder\CKFinderController@browserAction');
 });
+
+Route::get('/issue/{id}', 'IssueController@show')->name('issue.show');
+
+Route::get('/issue', function(){ return redirect(route('home')); });
+
 Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
     Route::resource('/manage-users', 'Admin\ManageUserController');
 });
