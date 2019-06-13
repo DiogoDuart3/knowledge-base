@@ -10,6 +10,8 @@ class Issue extends Model
         'user_id', 'subject', 'description', 'issue_solution', 'category_id'
     ];
 
+    protected $dates=['deleted_at'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

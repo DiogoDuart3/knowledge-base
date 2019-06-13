@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\models\Category;
 use App\models\Issue;
 use App\models\Tag;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IssueController extends Controller
 {
+    use SoftDeletes;
     function index()
     {
         $issues = Issue::orderBy('id', 'DESC')->paginate(8);
