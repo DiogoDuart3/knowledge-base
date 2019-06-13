@@ -5,23 +5,7 @@
         <div class="row">
             <div class="col-md-4">
                 <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
+                    {{ $issues->links() }}
                 </nav>
             </div>
 
@@ -50,7 +34,7 @@
         @foreach($issues as $issue)
             <div class="row mt-5 ml-1 mr-1">
                 <div class="card col-12 p-0" mb-5>
-                    <a href="{{ route('issues.show', $issue->id) }}">
+                    <a href="{{ route('issue.show', $issue->id) }}">
                         <div class="card-header">
                             {{ $issue->subject }}
                             <span class="ml-5 float-right text-muted">{{ $issue->category->name }}</span>

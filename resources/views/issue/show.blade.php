@@ -6,6 +6,9 @@
             <a href="{{ route('home') }}" class="btn text-primary" data-toggle="tooltip"
                data-placement="top" title="Back"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
         </div>
+        <div class="row">
+            @include('layouts.messages')
+        </div>
         <div class="row mt-5 ml-1 mr-1">
             <div class="card col-12 p-0" mb-5>
                 <div class="card-header">
@@ -39,9 +42,11 @@
                     @endif
                     {!! $issue->issue_solution !!}
                 </div>
-                <div class="card-footer">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash ml-2"></i>
+                <div class="card-footer text-center">
+                    <a data-toggle="tooltip" href="{{ route('issue.edit', $issue->id) }}" class="text-dark"
+                       data-placement="bottom" title="Edit"><i class="fa fa-edit"></i></a>
+                    <a data-toggle="tooltip" href="{{ route('issue.delete', $issue->id) }}" class="text-dark ml-5"
+                       data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
                 </div>
             </div>
             <div class="row mt-5 w-100">
@@ -66,13 +71,7 @@
                                          style="width: 2vh; height: 2vh;">
                                     <span><strong>{{ $reply->user->name }}</strong> <small>| {{ Carbon\Carbon::parse($reply->created_at)->format('H:i | d-m-Y') }}</small></span>
                                     <div class="comment text-muted ml-4">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque turpis
-                                        ante,
-                                        pulvinar in mi id, molestie mollis arcu. Nam pharetra odio mollis purus
-                                        condimentum,
-                                        quis semper nulla rhoncus. Donec posuere elit a sapien convallis, at viverra
-                                        quam
-                                        lobortis. Duis id lobortis diam. Nunc tincidunt non velit sed sagittis.
+                                        {{ $reply->body }}
                                     </div>
                                 </div>
                             @endforeach
