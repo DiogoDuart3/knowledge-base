@@ -3,9 +3,10 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Reply extends Eloquent
+class Reply extends Model
 {
-    //
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

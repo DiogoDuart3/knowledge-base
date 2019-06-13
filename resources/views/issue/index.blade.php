@@ -60,7 +60,7 @@
                         {{--                    <h5 class="card-title">Special title treatment</h5>--}}
                         <p class="card-text" style="max-height: 70px; overflow: hidden;">
                             {{--                            {{ $issue->description }}--}}
-                            {{{ substr($issue->description, 0, 250) }}}
+                            {!! substr($issue->description, 0, 250) !!}
                             @if(strlen($issue->description) >= 250)
                                 (...)
                             @endif
@@ -75,6 +75,12 @@
                             <div class="col-sm text-center">
                             <span>
                                 {{ $issue->comments->count() }} <i class="far fa-comments"></i>
+                            </span>
+                            @if($issue->issue_solution)
+                               <span class="mr-5 ml-5"></span>
+                               <span>
+                               <i class="fas fa-check"></i>
+                            @endif
                             </span>
                             </div>
                             <div class="col-sm">

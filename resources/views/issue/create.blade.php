@@ -45,27 +45,6 @@
                         </div>
                     </div>
                 </div>
-                {{--                <div class="form-group row">--}}
-                {{--                    <label class="col-sm-2 col-form-label">Tags</label>--}}
-                {{--                    <div class="col-sm-10">--}}
-                {{--                        <div class="form-check form-check-inline">--}}
-                {{--                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="check_list[]"--}}
-                {{--                                   value="option1">--}}
-                {{--                            <label class="form-check-label" for="inlineCheckbox1">PHP</label>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="form-check form-check-inline">--}}
-                {{--                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="check_list[]"--}}
-                {{--                                   value="option2">--}}
-                {{--                            <label class="form-check-label" for="inlineCheckbox2">Problem</label>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="form-check form-check-inline">--}}
-                {{--                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="check_list[]"--}}
-                {{--                                   value="option3"--}}
-                {{--                                   disabled>--}}
-                {{--                            <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
                 <div class="form-group row">
                     <label class="col-sm-2" for="tags">Tags</label>
                     <div class="col-sm-10">
