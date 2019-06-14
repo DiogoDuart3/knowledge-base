@@ -32,10 +32,9 @@ class ManageUserController extends Controller
         ], [
             'role_id.required' => 'The role field must be valid.'
         ]);
-        $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         session()->flash('success-message', 'User account create with sucess (id:' . $user->id . ')');
-        return redirect(route('admin.manage-users.index'));
+        return redirect(route('manage-users.index'));
     }
 
     public function show($id)

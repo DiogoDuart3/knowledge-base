@@ -60,7 +60,20 @@
                     <div class="col-12 mt-3">
                         <img src="{{ asset('img/icon/comment.svg') }}" alt="..." style="width: 2vh; height: 2vh;">
                         <span><strong>{{ $comment->user->name }}</strong> <small>| {{ Carbon\Carbon::parse($comment->created_at)->format('H:i | d-m-Y') }}</small></span>
-                        <a href="" class="btn btn-sm float-right">Reply</a>
+                        <div class="float-right">
+                            <span data-toggle="modal" data-target="#replyModal" data-whatever="@getbootstrap">
+                                <a href="#" class="btn btn-sm" data-toggle="tooltip"
+                                   data-placement="top" title="Reply"><i class="fa fa-reply"></i></a>
+                            </span>
+                            <span data-toggle="modal" data-target="#deleteModal" data-comment_id="{{ $comment->id }}">
+                                @if(Auth::user()->id == $comment->user->id || Auth::user()->isAdmin())
+                                    <a href="#" class="btn btn-sm" data-toggle="tooltip"
+                                       data-placement="top" title="Delete"><i class="fa fa-trash text-danger"></i></a>
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['comment.destroy', $comment->id], 'class'=>'d-none', 'id'=>'deleteComment_'.$comment->id]) }}
+                                    {{ Form::close() }}
+                                @endif
+                            </span>
+                        </div>
                         <div class="content ml-4 mt-1 mr-5">
                             <div class="comment text-muted text-justify">
                                 {{ $comment->body }}
@@ -84,7 +97,8 @@
                         <input type="hidden" name="issue_id" value="{{ $issue->id }}">
                         <div class="form-group">
                             <label for="newCommentInput">New comment</label>
-                            <textarea class="form-control w-50 m-auto" id="newCommentInput" name="body" rows="3"></textarea>
+                            <textarea class="form-control w-50 m-auto" id="newCommentInput" name="body"
+                                      rows="3"></textarea>
                         </div>
                         <a href="#" id="cancelNewComment" class="btn btn-danger btn-sm">Cancel</a>
                         <a href="#" onclick="$('#FormNewComment').submit()" class="btn btn-success btn-sm">Comment</a>
@@ -99,18 +113,52 @@
             </div>
         </div>
     </div>
+
+    {{--    Delete Comment Modal--}}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLable"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>
+                    </button>
+                    <button type="button" id="confirmDeleteComment" class="btn btn-danger float-right"><i class="fa fa-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--    End Delete Comment Modal--}}
 @endsection
 
 @section('script')
     <script>
-        $('#newCommentButton').click(function(){
+        $('#newCommentButton').click(function () {
             $('#newCommentDivButton').css('display', 'none');
             $('#newCommentDivForm').css('display', 'block');
         });
-        $('#cancelNewComment').click(function(){
+        $('#cancelNewComment').click(function () {
             $('#newCommentDivForm').css('display', 'none');
             $('#newCommentInput').val(null);
             $('#newCommentDivButton').css('display', 'block');
         });
+    </script>
+
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var comment_id = button.data('comment_id')
+            var modal = $(this)
+            modal.find('.modal-title').html('Delete comment <span class="text-muted">' + comment_id + '</span>')
+            modal.find('.modal-body input').val(comment_id)
+            $('#confirmDeleteComment').click(()=> {
+                $('#deleteComment_'+comment_id).submit();
+            });
+        })
     </script>
 @endsection

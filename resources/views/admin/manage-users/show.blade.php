@@ -8,7 +8,7 @@
            data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         <a href="{{ route('manage-users.edit', $user->id) }}" class="btn mb-2 float-right text-primary"
            data-toggle="tooltip"
-           data-placement="top" title="Edit"><i class="fa fa-pencil-alt fa-2x"></i></a>
+           data-placement="top" title="Edit"><i class="fa fa-pencil fa-2x"></i></a>
 
         <hr>
         @include('layouts.messages')

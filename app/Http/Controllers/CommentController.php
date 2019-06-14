@@ -17,4 +17,12 @@ class CommentController extends Controller
         $comment = Comment::create($data);
         return redirect(route('issue.show', $data['issue_id']));
     }
+
+    public function destroy(Request $request, $id){
+        $comment = Comment::findOrFail($id);
+        if(Auth::user()->isAdmin() || $comment->user->id == Auth::id){
+            $comment->delete();
+            return back();
+        }
+    }
 }

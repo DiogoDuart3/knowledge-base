@@ -6,7 +6,7 @@
 
         <a href="{{ route('manage-users.show', $user->id) }}" class="btn text-primary mb-2" data-toggle="tooltip"
            data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
-        <a onclick="document.getElementById('editForm').submit()" class="btn mb-2 float-right text-success"
+        <a href="#" onclick="document.getElementById('editForm').submit()" class="btn mb-2 float-right text-success"
            data-toggle="tooltip"
            data-placement="top" title="Apply changes"><i class="fa fa-check-circle fa-2x"></i></a>
 
