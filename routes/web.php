@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/issue/{id}/delete', 'IssueController@delete')->name('issue.delete');
     Route::resource('/categories', 'CategoryController');
     Route::get('/ckfinder/browser', 'CKFinder\CKFinderController@browserAction');
+    Route::resource('/tags', 'TagController');
+    Route::get('/tags/{id}/delete', 'TagController@delete')->name('tags.delete');
 });
 
 Route::get('/issue/{id}', 'IssueController@show')->name('issue.show');

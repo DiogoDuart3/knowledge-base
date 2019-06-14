@@ -36,7 +36,7 @@
                             <div class="dropdown-divider"></div>
                             @endadmin
                             <a class="dropdown-item" href="{{ route('categories.index') }}">Categories</a>
-                            <a class="dropdown-item" href="#">Tags</a>
+                            <a class="dropdown-item" href="{{ route('tags.index') }}">Tags</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
