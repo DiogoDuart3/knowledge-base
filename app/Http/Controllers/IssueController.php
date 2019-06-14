@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\models\Category;
 use App\models\Comment;
 use App\models\Issue;
+use App\models\Reply;
 use App\models\Tag;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class IssueController extends Controller
     {
         $issue = Issue::findOrFail($id);
         $comment = new Comment();
-        return view('issue.show', compact('issue', 'comment'));
+        $reply = new Reply();
+        return view('issue.show', compact('issue', 'comment', 'reply'));
     }
 
     function store(Request $request)

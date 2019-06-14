@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/tags/{id}/delete', 'TagController@delete')->name('tags.delete');
     Route::post('/comment', 'CommentController@store')->name('comment.store');
     Route::delete('/comment/{id}/destroy', 'CommentController@destroy')->name('comment.destroy');
+    Route::post('/comment/{id}/reply', 'ReplyController@store');
+    Route::delete('/reply/{id}/destroy', 'ReplyController@destroy')->name('reply.destroy');
 });
 
 Route::get('/issue/{id}', 'IssueController@show')->name('issue.show');

@@ -51,7 +51,7 @@
             </div>
             <div class="row mt-5 w-100">
                 <div class="col-12">
-                    <h2 class="text-center">Comments <i class="fa fa-comment-alt"></i></h2>
+                    <h2 class="text-center">Comments <i class="fa fa-comment"></i></h2>
                     <hr class="w-75">
                 </div>
             </div>
@@ -61,12 +61,13 @@
                         <img src="{{ asset('img/icon/comment.svg') }}" alt="..." style="width: 2vh; height: 2vh;">
                         <span><strong>{{ $comment->user->name }}</strong> <small>| {{ Carbon\Carbon::parse($comment->created_at)->format('H:i | d-m-Y') }}</small></span>
                         <div class="float-right">
-                            <span data-toggle="modal" data-target="#replyModal" data-whatever="@getbootstrap">
-                                <a href="#" class="btn btn-sm" data-toggle="tooltip"
-                                   data-placement="top" title="Reply"><i class="fa fa-reply"></i></a>
+                            <span class="newReply">
+                                <button href="#" class="btn btn-sm btn-add-reply" data-toggle="tooltip"
+                                        data-placement="top" data-comment_id="{{ $comment->id }}" title="Reply"><i
+                                            class="fa fa-reply fa-flip-vertical"></i></button>
                             </span>
-                            <span data-toggle="modal" data-target="#deleteModal" data-comment_id="{{ $comment->id }}">
-                                @if(Auth::user()->id == $comment->user->id || Auth::user()->isAdmin())
+                            <span data-toggle="modal" data-target="#deleteCommentModal" data-comment_id="{{ $comment->id }}">
+                                @if(Auth::user() && (Auth::user()->id == $comment->user->id || Auth::user()->isAdmin()))
                                     <a href="#" class="btn btn-sm" data-toggle="tooltip"
                                        data-placement="top" title="Delete"><i class="fa fa-trash text-danger"></i></a>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['comment.destroy', $comment->id], 'class'=>'d-none', 'id'=>'deleteComment_'.$comment->id]) }}
@@ -83,11 +84,35 @@
                                     <img src="{{ asset('img/icon/reply.svg') }}" alt="..."
                                          style="width: 2vh; height: 2vh;">
                                     <span><strong>{{ $reply->user->name }}</strong> <small>| {{ Carbon\Carbon::parse($reply->created_at)->format('H:i | d-m-Y') }}</small></span>
+                                    <span data-toggle="modal" data-target="#deleteReplyModal"
+                                          data-reply_id="{{ $reply->id }}">
+                                 @if(Auth::user() && (Auth::user()->id == $comment->user->id || Auth::user()->isAdmin()))
+                                            <a href="#" class="btn btn-sm" data-toggle="tooltip"
+                                               data-placement="top" title="Delete"><i
+                                                        class="fa fa-trash text-danger"></i></a>
+                                            {{ Form::open(['method' => 'DELETE', 'route' => ['reply.destroy', $reply->id], 'class'=>'d-none', 'id'=>'deleteReply_'.$reply->id]) }}
+                                            {{ Form::close() }}
+                                        @endif
+                            </span>
                                     <div class="comment text-muted ml-4">
                                         {{ $reply->body }}
                                     </div>
                                 </div>
                             @endforeach
+                            <div class="new-reply text-center" id="replyToComment_{{ $comment->id }}"
+                                 style="display: none">
+                                {!! Form::model($reply, ['method'=>'POST','action' => ['ReplyController@store', $comment->id], 'id'=>'replyToCommentForm_'.$comment->id]) !!}
+                                <div class="form-group">
+                                    <label for="newCommentInput">New reply</label>
+                                    <textarea class="form-control w-50 m-auto" id="newCommentInput" name="body"
+                                              rows="3"></textarea>
+                                </div>
+                                <a href="#" id="cancelNewReply" class="btn btn-secondary btn-sm"
+                                   onclick="$('#replyToComment_{{ $comment->id }}').css('display', 'none')">Cancel</a>
+                                <a href="#" onclick="$('#replyToCommentForm_{{ $comment->id }}').submit()"
+                                   class="btn btn-success btn-sm">Reply</a>
+                                {!! Form::close() !!}
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -100,7 +125,7 @@
                             <textarea class="form-control w-50 m-auto" id="newCommentInput" name="body"
                                       rows="3"></textarea>
                         </div>
-                        <a href="#" id="cancelNewComment" class="btn btn-danger btn-sm">Cancel</a>
+                        <a href="#" id="cancelNewComment" class="btn btn-secondary btn-sm">Cancel</a>
                         <a href="#" onclick="$('#FormNewComment').submit()" class="btn btn-success btn-sm">Comment</a>
                         {!! Form::close() !!}
                     </div>
@@ -115,7 +140,7 @@
     </div>
 
     {{--    Delete Comment Modal--}}
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLable"
+    <div class="modal fade" id="deleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="deleteCommentModalLable"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -128,12 +153,35 @@
                 <div class="modal-body">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>
                     </button>
-                    <button type="button" id="confirmDeleteComment" class="btn btn-danger float-right"><i class="fa fa-check"></i></button>
+                    <button type="button" id="confirmDeleteComment" class="btn btn-danger float-right"><i
+                                class="fa fa-check"></i></button>
                 </div>
             </div>
         </div>
     </div>
     {{--    End Delete Comment Modal--}}
+
+    {{--    Delete Reply Modal--}}
+    <div class="modal fade" id="deleteReplyModal" tabindex="-1" role="dialog" aria-labelledby="deleteReplyModalLable"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete reply</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>
+                    </button>
+                    <button type="button" id="confirmDeleteReply" class="btn btn-danger float-right"><i
+                                class="fa fa-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--    End Delete Reply Modal--}}
 @endsection
 
 @section('script')
@@ -143,6 +191,7 @@
             $('#newCommentDivForm').css('display', 'block');
         });
         $('#cancelNewComment').click(function () {
+            console.log('comment')
             $('#newCommentDivForm').css('display', 'none');
             $('#newCommentInput').val(null);
             $('#newCommentDivButton').css('display', 'block');
@@ -150,15 +199,39 @@
     </script>
 
     <script>
-        $('#deleteModal').on('show.bs.modal', function (event) {
+        $('#deleteCommentModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var comment_id = button.data('comment_id')
             var modal = $(this)
             modal.find('.modal-title').html('Delete comment <span class="text-muted">' + comment_id + '</span>')
             modal.find('.modal-body input').val(comment_id)
-            $('#confirmDeleteComment').click(()=> {
-                $('#deleteComment_'+comment_id).submit();
+            $('#confirmDeleteComment').click(() => {
+                $('#deleteComment_' + comment_id).submit();
             });
         })
+    </script>
+
+    <script>
+        $('#deleteReplyModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var reply_id = button.data('reply_id')
+            var modal = $(this)
+            modal.find('.modal-title').html('Delete reply <span class="text-muted">' + reply_id + '</span>')
+            modal.find('.modal-body input').val(reply_id)
+            $('#confirmDeleteReply').click(() => {
+                $('#deleteReply_' + reply_id).submit();
+            });
+        })
+    </script>
+
+    <script>
+        $('.btn-add-reply').on('click', function () {
+            var comment_id = $(this).attr('data-comment_id');
+            if ($('#replyToComment_' + comment_id).css('display') == 'block') {
+                $('#replyToComment_' + comment_id).css('display', 'none');
+            } else {
+                $('#replyToComment_' + comment_id).css('display', 'block');
+            }
+        });
     </script>
 @endsection
