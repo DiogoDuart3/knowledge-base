@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\models\Issue;
 use App\models\Tag;
 use Illuminate\Http\Request;
 
@@ -53,5 +54,10 @@ class TagController extends Controller
         $tag->delete();
         session()->flash('success-message', 'Tag deleted successfully');
         return redirect(route('tags.index'));
+    }
+
+    public function issues($id){
+        $issues = Tag::findOrFail($id)->issues()->paginate();
+        return view('issue.index', compact('issues'));
     }
 }

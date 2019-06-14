@@ -8,6 +8,7 @@
            data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         <a onclick="document.getElementById('formEdit').submit()" class="btn text-success float-right"
            data-toggle="tooltip"
+           style="cursor: pointer"
            data-placement="top" title="Apply changes to issue"><i class="fa fa-check fa-2x"></i></a>
         <hr>
         @include('layouts.messages')

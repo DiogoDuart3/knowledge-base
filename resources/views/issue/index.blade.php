@@ -10,7 +10,7 @@
             </div>
 
             <div class="input-group col-md-4 offset-md-4">
-                <div class="row position-absolute mr-3" style="right: 0;">
+                <div class="row position-relative mr-3" style="right: 0;">
                     <form class="form-inline">
                         <div class="input-group ml-2">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -34,12 +34,17 @@
         @foreach($issues as $issue)
             <div class="row mt-5 ml-1 mr-1">
                 <div class="card col-12 p-0" mb-5>
-                    <a href="{{ route('issue.show', $issue->id) }}">
-                        <div class="card-header">
+                    <div class="card-header">
+                        [{{ $issue->category->name }}] -
+                        <a href="{{ route('issue.show', $issue->id) }}">
                             {{ $issue->subject }}
-                            <span class="ml-5 float-right text-muted">{{ $issue->category->name }}</span>
-                        </div>
-                    </a>
+                        </a>
+                        <span class="ml-5 float-right text-muted">
+                                @foreach($issue->tags as $tag)
+                                <a href="{{ route('tags.issues', $tag->id) }}"><span class="badge badge-secondary">{{ $tag->name }}</span></a>
+                            @endforeach
+                            </span>
+                    </div>
                     <div class="card-body">
                         {{--                    <h5 class="card-title">Special title treatment</h5>--}}
                         <p class="card-text" style="max-height: 70px; overflow: hidden;">
@@ -60,9 +65,9 @@
                             <span>
                                 {{ $issue->comments->count() }} <i class="fa fa-comments"></i>
                             </span>
-                            @if($issue->issue_solution)
-                               <span class="mr-5 ml-5"></span>
-                               <span>
+                                @if($issue->issue_solution)
+                                    <span class="mr-5 ml-5"></span>
+                                    <span>
                                <i class="fa fa-check"></i>
                             @endif
                             </span>

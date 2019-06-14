@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/issue/{id}/delete', 'IssueController@delete')->name('issue.delete');
     Route::resource('/categories', 'CategoryController');
     Route::get('/ckfinder/browser', 'CKFinder\CKFinderController@browserAction');
+    Route::get('/tags/{id}/issues', 'TagController@issues')->name('tags.issues');
     Route::resource('/tags', 'TagController');
     Route::get('/tags/{id}/delete', 'TagController@delete')->name('tags.delete');
     Route::post('/comment', 'CommentController@store')->name('comment.store');

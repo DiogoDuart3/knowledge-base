@@ -25,7 +25,7 @@
             @foreach($tags as $tag)
                 <tr>
                     <th scope="row">{{ $tag->id }}</th>
-                    <td>{{ $tag->name }}</td>
+                    <td><a href="{{ route('tags.issues', $tag->id) }}">{{ $tag->name }}</a></td>
                     <td class="text-center">{{ Carbon\Carbon::parse($tag->created_at)->format('H:i | d-m-Y') }}</td>
                     <td class="text-center">{{ Carbon\Carbon::parse($tag->updated_at)->format('H:i | d-m-Y') }}</td>
                     <td class="text-right">
