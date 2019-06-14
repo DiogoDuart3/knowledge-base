@@ -78,12 +78,39 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="col-12">
-                    <div class="new-comment mt-5 text-center">
-                        <a href="" class="btn btn-primary btn-sm">New comment</a>
+                <div class="col-12 mt-5" id="newCommentDivForm" style="display: none">
+                    <div class="new-comment text-center">
+                        {!! Form::model($comment, ['method'=>'POST','action' => 'CommentController@store', 'id'=>'FormNewComment']) !!}
+                        <input type="hidden" name="issue_id" value="{{ $issue->id }}">
+                        <div class="form-group">
+                            <label for="newCommentInput">New comment</label>
+                            <textarea class="form-control w-50 m-auto" id="newCommentInput" name="body" rows="3"></textarea>
+                        </div>
+                        <a href="#" id="cancelNewComment" class="btn btn-danger btn-sm">Cancel</a>
+                        <a href="#" onclick="$('#FormNewComment').submit()" class="btn btn-success btn-sm">Comment</a>
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+                <div class="col-12 mt-5" id="newCommentDivButton">
+                    <div class="text-center">
+                        <button class="btn btn-success btn-sm" id="newCommentButton">New Comment...</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $('#newCommentButton').click(function(){
+            $('#newCommentDivButton').css('display', 'none');
+            $('#newCommentDivForm').css('display', 'block');
+        });
+        $('#cancelNewComment').click(function(){
+            $('#newCommentDivForm').css('display', 'none');
+            $('#newCommentInput').val(null);
+            $('#newCommentDivButton').css('display', 'block');
+        });
+    </script>
 @endsection

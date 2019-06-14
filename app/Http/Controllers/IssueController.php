@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\models\Category;
+use App\models\Comment;
 use App\models\Issue;
 use App\models\Tag;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,7 +30,8 @@ class IssueController extends Controller
     function show($id)
     {
         $issue = Issue::findOrFail($id);
-        return view('issue.show', compact('issue'));
+        $comment = new Comment();
+        return view('issue.show', compact('issue', 'comment'));
     }
 
     function store(Request $request)
