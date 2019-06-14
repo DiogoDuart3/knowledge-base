@@ -9,8 +9,8 @@
                 </nav>
             </div>
 
-            <div class="input-group col-md-4 offset-md-4">
-                <div class="row position-relative mr-3" style="right: 0;">
+            <div class="input-group col-md-4 offset-md-4 justify-content-end">
+                <div class="row mr-3">
                     <form class="form-inline">
                         <div class="input-group ml-2">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
