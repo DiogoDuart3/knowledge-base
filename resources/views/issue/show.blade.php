@@ -7,7 +7,9 @@
                data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         </div>
         <div class="row">
-            @include('layouts.messages')
+            <div class="col-12">
+                @include('layouts.messages')
+            </div>
         </div>
         <div class="row mt-5 ml-1 mr-1">
             <div class="card col-12 p-0" mb-5>
