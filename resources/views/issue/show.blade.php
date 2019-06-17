@@ -42,12 +42,14 @@
                     @endif
                     {!! $issue->issue_solution !!}
                 </div>
-                <div class="card-footer text-center">
-                    <a data-toggle="tooltip" href="{{ route('issue.edit', $issue->id) }}" class="text-dark"
-                       data-placement="bottom" title="Edit"><i class="fa fa-edit"></i></a>
-                    <a data-toggle="tooltip" href="{{ route('issue.delete', $issue->id) }}" class="text-dark ml-5"
-                       data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
-                </div>
+                @auth
+                    <div class="card-footer text-center">
+                        <a data-toggle="tooltip" href="{{ route('issue.edit', $issue->id) }}" class="text-dark"
+                           data-placement="bottom" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a data-toggle="tooltip" href="{{ route('issue.delete', $issue->id) }}" class="text-dark ml-5"
+                           data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
+                    </div>
+                @endauth
             </div>
             <div class="row mt-5 w-100">
                 <div class="col-12">
@@ -66,7 +68,8 @@
                                         data-placement="top" data-comment_id="{{ $comment->id }}" title="Reply"><i
                                             class="fa fa-reply fa-flip-vertical"></i></button>
                             </span>
-                            <span data-toggle="modal" data-target="#deleteCommentModal" data-comment_id="{{ $comment->id }}">
+                            <span data-toggle="modal" data-target="#deleteCommentModal"
+                                  data-comment_id="{{ $comment->id }}">
                                 @if(Auth::user() && (Auth::user()->id == $comment->user->id || Auth::user()->isAdmin()))
                                     <a href="#" class="btn btn-sm" data-toggle="tooltip"
                                        data-placement="top" title="Delete"><i class="fa fa-trash text-danger"></i></a>
@@ -130,17 +133,20 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
-                <div class="col-12 mt-5" id="newCommentDivButton">
-                    <div class="text-center">
-                        <button class="btn btn-success btn-sm" id="newCommentButton">New Comment...</button>
+                @auth
+                    <div class="col-12 mt-5" id="newCommentDivButton">
+                        <div class="text-center">
+                            <button class="btn btn-success btn-sm" id="newCommentButton">New Comment...</button>
+                        </div>
                     </div>
-                </div>
+                @endauth
             </div>
         </div>
     </div>
 
     {{--    Delete Comment Modal--}}
-    <div class="modal fade" id="deleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="deleteCommentModalLable"
+    <div class="modal fade" id="deleteCommentModal" tabindex="-1" role="dialog"
+         aria-labelledby="deleteCommentModalLable"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
