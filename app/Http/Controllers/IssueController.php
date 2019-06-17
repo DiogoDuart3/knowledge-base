@@ -104,7 +104,7 @@ class IssueController extends Controller
 
     function search(){
         $subject = Input::get('subject');
-        $issues = Issue::where('subject', 'like', '%'.$subject.'%')->paginate(8);
+        $issues = Issue::where('subject', 'ILIKE', '%'.$subject.'%')->paginate(8);
         return view('issue.index', compact('issues'));
     }
 }
