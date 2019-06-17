@@ -11,16 +11,16 @@
 
             <div class="input-group col-md-4 offset-md-4 justify-content-end">
                 <div class="row mr-3">
-                    <form class="form-inline">
+                    {!! Form::open(['method'=>'GET', 'route'=>['issue.search','']]) !!}
                         <div class="input-group ml-2">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control mr-sm-2" name="subject" type="search" placeholder="Search" aria-label="Search">
                             <span class="input-group-btn">
                                 <button class="btn btn-outline-success" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -80,5 +80,12 @@
                 </div>
             </div>
         @endforeach
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <nav aria-label="Page navigation">
+                    {{ $issues->links() }}
+                </nav>
+            </div>
+        </div>
     </div>
 @endsection

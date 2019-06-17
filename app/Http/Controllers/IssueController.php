@@ -10,6 +10,7 @@ use App\models\Tag;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class IssueController extends Controller
 {
@@ -99,5 +100,11 @@ class IssueController extends Controller
         $issue->delete();
         session()->flash('success-message', 'Issue deleted successfully');
         return redirect(route('home'));
+    }
+
+    function search(){
+        $subject = Input::get('subject');
+        $issues = Issue::where('subject', 'like', '%'.$subject.'%')->paginate(8);
+        return view('issue.index', compact('issues'));
     }
 }

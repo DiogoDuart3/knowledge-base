@@ -15,6 +15,8 @@ Route::get('/', 'IssueController@index')->name('home');
 
 Auth::routes(['register'=>false]);
 
+Route::any('/issue/search/', 'IssueController@search')->name('issue.search');
+
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
