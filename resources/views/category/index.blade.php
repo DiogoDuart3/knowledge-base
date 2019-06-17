@@ -6,7 +6,7 @@
 
         <a href="{{ route('home') }}" class="btn text-primary mb-2" data-toggle="tooltip"
            data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
-        <a href="{{ route('categories.create') }}" class="btn mb-2 float-right text-primary"
+        <a href="{{ route('categories.create') }}" class="btn mb-2 float-right text-success"
            data-toggle="tooltip"
            data-placement="top" title="Add new category"><i class="fa fa-plus-circle fa-2x"></i></a>
 
@@ -30,7 +30,8 @@
                     <td class="text-center">{{ Carbon\Carbon::parse($category->updated_at)->format('H:i | d-m-Y') }}</td>
                     <td class="text-center">{{ Carbon\Carbon::parse($category->created_at)->format('H:i | d-m-Y') }}</td>
                     <td class="text-right">
-                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                        <a href="{{ route('categories.edit', $category->id) }}" data-toggle="tooltip"
+                           data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>
                         {!! Form::open(['route'=>['categories.destroy', $category->id], 'method'=>'delete', 'class'=>'d-inline']) !!}
                         {!! Form::submit('Delete', ['class'=>'btn btn-outline-danger btn-sm']) !!}
                         {!! Form::close() !!}
