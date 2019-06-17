@@ -64,22 +64,25 @@
                     <div class="col-12 mt-3">
                         <img src="{{ asset('img/icon/comment.svg') }}" alt="..." style="width: 2vh; height: 2vh;">
                         <span><strong>{{ $comment->user->name }}</strong> <small>| {{ Carbon\Carbon::parse($comment->created_at)->format('H:i | d-m-Y') }}</small></span>
-                        <div class="float-right">
+                        @auth
+                            <div class="float-right">
                             <span class="newReply">
                                 <button href="#" class="btn btn-sm btn-add-reply" data-toggle="tooltip"
                                         data-placement="top" data-comment_id="{{ $comment->id }}" title="Reply"><i
                                             class="fa fa-reply fa-flip-vertical"></i></button>
                             </span>
-                            <span data-toggle="modal" data-target="#deleteCommentModal"
-                                  data-comment_id="{{ $comment->id }}">
+                                <span data-toggle="modal" data-target="#deleteCommentModal"
+                                      data-comment_id="{{ $comment->id }}">
                                 @if(Auth::user() && (Auth::user()->id == $comment->user->id || Auth::user()->isAdmin()))
-                                    <a href="#" class="btn btn-sm" data-toggle="tooltip"
-                                       data-placement="top" title="Delete"><i class="fa fa-trash text-danger"></i></a>
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['comment.destroy', $comment->id], 'class'=>'d-none', 'id'=>'deleteComment_'.$comment->id]) }}
-                                    {{ Form::close() }}
-                                @endif
+                                        <a href="#" class="btn btn-sm" data-toggle="tooltip"
+                                           data-placement="top" title="Delete"><i
+                                                    class="fa fa-trash text-danger"></i></a>
+                                        {{ Form::open(['method' => 'DELETE', 'route' => ['comment.destroy', $comment->id], 'class'=>'d-none', 'id'=>'deleteComment_'.$comment->id]) }}
+                                        {{ Form::close() }}
+                                    @endif
                             </span>
-                        </div>
+                            </div>
+                        @endauth
                         <div class="content ml-4 mt-1 mr-5">
                             <div class="comment text-muted text-justify">
                                 {{ $comment->body }}

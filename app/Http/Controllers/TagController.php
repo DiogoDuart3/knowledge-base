@@ -51,6 +51,10 @@ class TagController extends Controller
 
     public function destroy($id){
         $tag = Tag::findOrFail($id);
+        if($tag->issues->count() > 0){
+            session()->flash('error-message', 'Tag can not be deleted because it is to be used in issues.');
+            return redirect(route('tags.index'));
+        }
         $tag->delete();
         session()->flash('success-message', 'Tag deleted successfully');
         return redirect(route('tags.index'));
