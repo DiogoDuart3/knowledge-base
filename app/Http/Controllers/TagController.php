@@ -64,4 +64,9 @@ class TagController extends Controller
         $issues = Tag::findOrFail($id)->issues()->paginate();
         return view('issue.index', compact('issues'));
     }
+
+    public function list(){
+        $tags = Tag::orderBy('id', 'ASC')->paginate(15);
+        return view('tags.list', compact('tags'));
+    }
 }

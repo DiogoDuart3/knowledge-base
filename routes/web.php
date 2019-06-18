@@ -17,6 +17,8 @@ Auth::routes(['register'=>false]);
 
 Route::any('/issue/search/', 'IssueController@search')->name('issue.search');
 
+Route::get('/tags/list', 'TagController@list')->name('tags.list');
+
 Route::get('/tags/{id}/issues', 'TagController@issues')->name('tags.issues');
 
 //Route::get('/home', 'HomeController@index')->name('home');
