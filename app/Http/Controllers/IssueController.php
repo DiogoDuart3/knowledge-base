@@ -10,11 +10,13 @@ use App\models\Tag;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class IssueController extends Controller
 {
     use SoftDeletes;
+
     function index()
     {
         $issues = Issue::orderBy('id', 'DESC')->paginate(8);
@@ -90,21 +92,66 @@ class IssueController extends Controller
         return redirect(route('issue.show', $id));
     }
 
-    function delete($id){
+    function delete($id)
+    {
         $issue = Issue::findOrFail($id);
         return view('issue.delete', compact('issue'));
     }
 
-    function destroy($id){
+    function destroy($id)
+    {
         $issue = Issue::findOrFail($id);
         $issue->delete();
         session()->flash('success-message', 'Issue deleted successfully');
         return redirect(route('home'));
     }
 
-    function search(){
+    function search()
+    {
         $subject = Input::get('subject');
-        $issues = Issue::where('subject', 'ILIKE', '%'.$subject.'%')->paginate(8);
+//        foreach (Issue::where('subject', 'ILIKE', '%' . $subject . '%')->get() as $issue) {
+//            $issues[$issue->id] = $issue;
+//        }
+//        foreach (Tag::where('name', 'ILIKE', '%' . $subject . '%')->first()->issues as $issue) {
+//            $issues[$issue->id] = $issue;
+//        }
+//        foreach (Category::where('name', 'ILIKE', '%'.$subject.'%')->first()->issues as $issue) {
+//            $issues[$issue->id] = $issue;
+//        }
+
+//        $issues = DB::table('issues')
+//                    ->select('*')
+//                    ->join('issue_tag', 'issue_tag.issue_id', '=', 'issues.id')
+//                    ->join('tags', 'issue_tag.tag_id', '=', 'tags.id')
+//                    ->join('categories', 'issues.category_id', '=', 'categories.id')
+//                    ->where('tags.id', 2)->paginate(8);
+
+        $issues_id = Issue::leftJoin('issue_tag', 'issue_tag.issue_id', '=', 'issues.id')
+            ->leftJoin('tags', 'issue_tag.tag_id', '=', 'tags.id')
+            ->leftJoin('categories', 'categories.id', '=', 'issues.category_id')
+            ->where('issues.subject', 'ILIKE', '%' . $subject . '%')
+            ->orWhere('categories.name', 'ILIKE', '%' . $subject . '%')
+            ->orWhere('tags.name', 'ILIKE', '%' . $subject . '%')
+            ->get('issues.id');
+
+        $issues = Issue::whereIn('id', $issues_id)->orderBy('id', 'DESC')->paginate(8);
+
+//        dd($issues);
+
+//        dd(Tag::where('name', 'ILIKE', '%'.$subject.'%')->get()->find());
+//        $issues = Issue::where('subject', 'ILIKE', '%'.$subject.'%')->orWhere(
+//            'category_id', '=', Category::where('name', 'ILIKE', '%'.$subject.'%')->first()->id
+//        )->orWhere(
+//            'issues.id'
+//        )->paginate(8);
+
+//        $issues->paginate(8);
+//        $issues = $tag->issues->get();
+//        $issues->paginate(8);
+//        foreach(Tag::where('name', 'ILIKE', '%'.$subject.'%')->get() as $tag){
+//            $issues += $tag->issue;
+//        }
+        if ($issues->count() == 0) abort(404);
         return view('issue.index', compact('issues'));
     }
 }
