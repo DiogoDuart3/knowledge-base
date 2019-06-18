@@ -67,6 +67,6 @@ class TagController extends Controller
 
     public function list(){
         $tags = Tag::orderBy('id', 'ASC')->paginate(15);
-        return view('tags.list', compact('tags'));
+        return view('manage-tags.list', compact('tags'));
     }
 }

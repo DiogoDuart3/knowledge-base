@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\models\Category;
+use App\models\Issue;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Session;
 
@@ -57,8 +58,16 @@ class CategoryController extends Controller
         return redirect(route('categories.index'));
     }
 
-    function show($id){
+    function show($id){;
         $category = Category::findOrFail($id);
-        return view('category.show', compact('category'));
+        $issues = Issue::where('category_id', '=', $category->id)->orderBy('id','DESC')->paginate(8);
+        return view('issue.index', compact('issues'));
     }
+
+    function list()
+    {
+        $categories = Category::all();
+        return view('category.list', compact('categories'));
+    }
+
 }
