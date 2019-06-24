@@ -11,26 +11,6 @@
 |
 */
 
-Route::get('/', 'IssueController@index')->name('home');
-
-Auth::routes(['register'=>false]);
-
-Route::any('/issue/search/', 'IssueController@search')->name('issue.search');
-
-Route::get('/tags/list', 'TagController@list')->name('tags.list');
-
-Route::get('/tags/{id}/issues', 'TagController@issues')->name('tags.issues');
-
-Route::get('/categories/list', 'CategoryController@list')->name('categories.list');
-
-Route::get('/categories/{id}', 'CategoryController@show')->name('categories.show');
-
-Route::get('/issue/{id}', 'IssueController@show')->name('issue.show');
-
-Route::get('/issue', function(){ return redirect(route('home')); });
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('/issue', 'IssueController', ['except' => ['index', 'show']]);
     Route::get('/issue/{id}/delete', 'IssueController@delete')->name('issue.delete');
@@ -47,3 +27,23 @@ Route::group(['middleware' => 'auth'], function(){
 Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
     Route::resource('/manage-users', 'Admin\ManageUserController');
 });
+
+Route::get('/', 'IssueController@index')->name('home');
+
+Auth::routes(['register'=>false]);
+
+Route::any('/issue/search/', 'IssueController@search')->name('issue.search');
+
+Route::get('/tags/list', 'TagController@list')->name('tags.list');
+
+Route::get('/tags/{id}/issues', 'TagController@issues')->name('tags.issues');
+
+Route::get('/categories/list', 'CategoryController@list')->name('categories.list');
+
+Route::get('/categories/{id}', 'CategoryController@show')->name('categories.show');
+
+Route::get('/issue', function(){ return redirect(route('home')); });
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/issue/{id}', 'IssueController@show')->name('issue.show');
