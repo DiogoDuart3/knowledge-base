@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center mb-4">Edit Category</h1>
+        <h1 class="text-center mb-4">Manage Categories</h1>
 
         <a href="{{ route('home') }}" class="btn text-primary mb-2" data-toggle="tooltip"
            data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
@@ -32,8 +32,9 @@
                     <td class="text-right">
                         <a href="{{ route('categories.edit', $category->id) }}" data-toggle="tooltip"
                            data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>
-                        {!! Form::open(['route'=>['categories.destroy', $category->id], 'method'=>'delete', 'class'=>'d-inline']) !!}
-                        {!! Form::submit('Delete', ['class'=>'btn btn-outline-danger btn-sm']) !!}
+                        {!! Form::open(['route'=>['categories.destroy', $category->id], 'method'=>'delete', 'class'=>'d-inline', 'id'=>'form-delete-'.$category->id]) !!}
+                        <a href="#" onclick="$('#form-delete-{{ $category->id }}').submit()" data-toggle="tooltip"
+                           data-placement="top" title="Delete"><i class="fa fa-trash text-danger"></i></a>
                         {!! Form::close() !!}
                     </td>
                 </tr>
