@@ -71,13 +71,14 @@ class ManageUserController extends Controller
         if ($data['status'] == 1) {
             $user->restore();
         } else if ($data['status'] == 2) {
-            if ($id == 1) {
+            if ($id == 1)
                 session()->flash('error-message', 'You can not edit the administrator account status');
-                return redirect(route('manage-users.show', $user->id));
-            } else
+            else
                 $user->delete();
         }
 
         session()->flash('success-message', 'User edited with success');
+
+        return redirect(route('manage-users.show', $user->id));
     }
 }
