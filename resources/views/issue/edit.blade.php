@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="text-center mb-4">Edit issue <span class="text-muted">{{ $issue->subject }}</span></h1>
 
-        <a href="{{ route('manage-users.index') }}" class="btn text-primary" data-toggle="tooltip"
+        <a href="{{ route('issue.show', $issue->id) }}" class="btn text-primary" data-toggle="tooltip"
            data-placement="top" title="Back"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
         <a onclick="document.getElementById('formEdit').submit()" class="btn text-success float-right"
            data-toggle="tooltip"
