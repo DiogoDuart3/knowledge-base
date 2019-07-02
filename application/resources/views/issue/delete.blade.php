@@ -9,15 +9,13 @@
                     <span class="ml-5 float-right text-muted">{{ $issue->category->name }}</span>
                 </div>
             </a>
-            <div class="card-body">
+            <div class="card-body" style="max-height: 3000px; overflow: scroll">
                 {{--                    <h5 class="card-title">Special title treatment</h5>--}}
-                <p class="card-text" style="max-height: 70px; overflow: hidden;">
                     {{--                            {{ $issue->description }}--}}
                     {!! substr($issue->description, 0, 250) !!}
                     @if(strlen($issue->description) >= 250)
                         (...)
                     @endif
-                </p>
             </div>
             <div class="card-footer text-muted">
                 <div class="row">

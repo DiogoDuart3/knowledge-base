@@ -45,15 +45,13 @@
                             @endforeach
                             </span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="max-height: 150px; overflow: hidden">
                         {{--                    <h5 class="card-title">Special title treatment</h5>--}}
-                        <p class="card-text" style="max-height: 70px; overflow: hidden;">
                             {{--                            {{ $issue->description }}--}}
                             {!! substr($issue->description, 0, 250) !!}
                             @if(strlen($issue->description) >= 250)
                                 (...)
                             @endif
-                        </p>
                     </div>
                     <div class="card-footer text-muted">
                         <div class="row">

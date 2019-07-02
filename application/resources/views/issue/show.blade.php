@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="max-height: 3000px; overflow: scroll">
                     {!! $issue->description !!}
                     @if($issue->issue_solution)
                         <hr>
