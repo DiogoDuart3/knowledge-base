@@ -12,6 +12,17 @@ class Issue extends Model
 
     protected $dates=['deleted_at'];
 
+    public function getDescriptionAttribute($value){
+        $tagsToStrip = array('@<script[^>]*?>.*?</script>@si'); // you can add more
+        return preg_replace($tagsToStrip, '', $value);
+    }
+
+    public function getSolutionAttribute($value){
+        $tagsToStrip = array('@<script[^>]*?>.*?</script>@si'); // you can add more
+        return preg_replace($tagsToStrip, '', $value);
+    }
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
