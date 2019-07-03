@@ -12,13 +12,19 @@ class Issue extends Model
 
     protected $dates=['deleted_at'];
 
+    private /** @noinspection CssInvalidAtRule */ $tagsToStrip = array(
+        '@<script[^>]*?>.*?</script>@si',
+        '@<style[^>]*?>.*?</style>@si',
+        '@<link[^>]*?>.*?</link>@si',
+    );
+
     public function getDescriptionAttribute($value){
-        $tagsToStrip = array('@<script[^>]*?>.*?</script>@si'); // you can add more
+        $tagsToStrip = $this->tagsToStrip;
         return preg_replace($tagsToStrip, '', $value);
     }
 
     public function getSolutionAttribute($value){
-        $tagsToStrip = array('@<script[^>]*?>.*?</script>@si'); // you can add more
+        $tagsToStrip = $this->tagsToStrip;
         return preg_replace($tagsToStrip, '', $value);
     }
 
