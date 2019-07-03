@@ -30,19 +30,19 @@
                     <div class="form-group row">
                         <label for="subject" class="col-sm-2 col-form-label">Subject</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" value="{{ old('subject') }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="description" class="col-sm-2 col-form-label">Description</label>
                         <div class="col-sm-10">
-                            <textarea id="description" name="description" rows="10" cols="80"></textarea>
+                            <textarea id="description" name="description" rows="10" cols="80" value="{{ old('description') }}"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="issue_solution" class="col-sm-2 col-form-label">Issue solution</label>
                         <div class="col-sm-10">
-                            <textarea name="issue_solution" id="issue_solution" rows="10" cols="80"></textarea>
+                            <textarea name="issue_solution" id="issue_solution" rows="10" cols="80" value="{{ old('issue_solution') }}"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -52,7 +52,7 @@
                                 <select class="form-control" name="category_id">
                                     <option disabled selected>Selecione</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" {{ (old('category_id') == $category->id ? 'selected' : '' ) }}>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -63,7 +63,7 @@
                         <div class="col-sm-10">
                             <select multiple class="form-control" name="tags[]">
                                 @foreach($tags as $tag)
-                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    <option value="{{ $tag->id }}" {{ (in_array($tag->id, ((old('tags')) ? old('tags') : array()))) ? 'selected' : '' }}>{{ $tag->name }}</option>
                                 @endforeach
                             </select>
                         </div>
