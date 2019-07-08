@@ -50,7 +50,7 @@ class IssueController extends Controller
         ]);
         $data['user_id'] = Auth::id();
         $issue = Issue::create($data);
-        if ($data['tags'][0]) {
+        if (isset($data['tags'])) {
             foreach ($data['tags'] as $tag_id) {
                 $tag_id = Tag::findOrFail($tag_id);
                 $issue->tags()->attach($tag_id);
