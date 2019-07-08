@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="email">Confirm Password</label>
-            {!! Form::input('password', 'confirm_password', '', ['class'=>'form-control', 'id'=>'password', 'placeholder'=>'password...']) !!}
+            {!! Form::input('password', 'confirm_password', '', ['class'=>'form-control', 'id'=>'confirm_password', 'placeholder'=>'password...']) !!}
         </div>
         <div class="form-group">
             <label for="roleSelect">Role</label>
