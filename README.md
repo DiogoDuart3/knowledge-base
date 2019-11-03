@@ -1,1 +1,1 @@
-# knownlage-base
+# knownledge-base
